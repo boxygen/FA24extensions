@@ -114,7 +114,7 @@ while (is_array($_POST) && list($key, $val) = each($_POST))
       	// go back
   		case "back":
             $url=REPGENDIR."/repgen_select.php";
-            header("Location: http://$HTTP_HOST".$url);  // switches to page 'select a report'
+            header("Location: ".PROTOCOL.$HTTP_HOST.$url);  // switches to page 'select a report'
             exit;
           	break;
   		case "delete":
@@ -501,8 +501,8 @@ if (substr($id_new,0,1) != 'B')
 	$txt = "<td><select name = 'feld' size='1'>\n";
 	for ($i = 0; $i < $num; $i++)
 	{
-		$meta = mysql_fetch_field($res, $i);
-		$txt .= "<option value=\"".$meta->name."\" ".m_s($meta->name,$feld)." > ".$meta->name."</option>\n";
+		$name = db_field_name($res, $i);
+		$txt .= "<option value=\"".$name."\" ".m_s($name,$feld)." > ".$name."</option>\n";
 	}
 	$txt .= "</select>\n";
 	echo $txt;

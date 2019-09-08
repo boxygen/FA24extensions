@@ -159,6 +159,7 @@ CREATE TABLE `0_budget_trans` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tran_date` date NOT NULL DEFAULT '0000-00-00',
   `account` varchar(15) NOT NULL DEFAULT '',
+  `memo_` tinytext NOT NULL,
   `amount` double NOT NULL DEFAULT '0',
   `dimension_id` int(11) DEFAULT '0',
   `dimension2_id` int(11) DEFAULT '0',
@@ -190,9 +191,9 @@ INSERT INTO `0_chart_class` VALUES
 ('41', '41 - Operating Section - Sales or Service Revenues', '4', '0'),
 ('42', '42 - Operating Section - Cost of Goods or Services Sold', '5', '0'),
 ('43', '43 - Operating Section - Selling Expenses', '6', '0'),
-('44', '44 - Operating Section - Administrative &amp; General Expenses', '6', '0'),
-('51', '51 - None Operating Section - Other Revenues and Gains', '4', '0'),
-('52', '52 - None Operating Section - Other Expenses and Losses', '6', '0'),
+('44', '44 - Operating Section - Administrative and General Expenses', '6', '0'),
+('51', '51 - Non Operating Section - Other Revenues and Gains', '4', '0'),
+('52', '52 - Non Operating Section - Other Expenses and Losses', '6', '0'),
 ('6', '6 - Income Tax', '6', '0'),
 ('7', '7 - Discontinued Operation', '6', '0'),
 ('8', '8 - Extraordinary Items', '6', '0');
@@ -269,6 +270,7 @@ INSERT INTO `0_chart_master` VALUES
 ('21100002', '', 'Accrued Rent', '2110', '0'),
 ('21110001', '', 'Excess Billings', '2111', '0'),
 ('21120001', '', 'Partner A Loan', '2112', '0'),
+('21130001', '', 'Deferred Income', '2113', '0'),
 ('22010001', '', 'Notes Payable Due After the Upcoming Year', '2201', '0'),
 ('22010002', '', 'Unamortized Note Premium', '2201', '0'),
 ('22010010', '', 'Long-term Bonds', '2201', '0'),
@@ -387,6 +389,7 @@ INSERT INTO `0_chart_types` VALUES
 ('2110', '2110 - Short-term Accrued Expenses', '2', '21', '0'),
 ('2111', '2111 - Excess Billings', '2', '21', '0'),
 ('2112', '2112 - Partners&#039; Or Owners&#039; Loans', '2', '21', '0'),
+('2113', '2113 - Deferred Income', '2', '21', '0'),
 ('22', '22 - None Current Liabilities', '2', '0', '0'),
 ('2201', '2201 - Long-term Loans , Notes and Bonds Payable', '2', '22', '0'),
 ('2202', '2202 - Lease Obligations', '2', '22', '0'),
@@ -771,17 +774,12 @@ CREATE TABLE `0_fiscal_year` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `begin` (`begin`),
   UNIQUE KEY `end` (`end`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB ;
 
 ### Data of table `0_fiscal_year` ###
 
 INSERT INTO `0_fiscal_year` VALUES
-('1', '2008-01-01', '2008-12-31', '0'),
-('2', '2009-01-01', '2009-12-31', '0'),
-('3', '2010-01-01', '2010-12-31', '0'),
-('4', '2011-01-01', '2011-12-31', '0'),
-('5', '2012-01-01', '2012-12-31', '0'),
-('6', '2013-01-01', '2013-12-31', '0');
+('1', '2018-01-01', '2018-12-31', '0');
 
 ### Structure of table `0_gl_trans` ###
 
@@ -1018,7 +1016,8 @@ INSERT INTO `0_payment_terms` VALUES
 ('1', 'Due 15th Of the Following Month', '0', '17', '0'),
 ('2', 'Due By End Of The Following Month', '0', '30', '0'),
 ('3', 'Payment due within 10 days', '10', '0', '0'),
-('4', 'Cash Only', '1', '0', '0');
+('4', 'Cash Only', '1', '0', '0'),
+('5', 'Prepaid', -1, 0, 0);
 
 ### Structure of table `0_prices` ###
 
@@ -1726,7 +1725,7 @@ INSERT INTO `0_sys_prefs` VALUES
 ('default_sales_discount_act', 'glsetup.sales', 'varchar', '15', '41010002'),
 ('default_wip_act', 'glsetup.items', 'varchar', '15', '42040001'),
 ('default_workorder_required', 'glsetup.manuf', 'int', '11', '20'),
-('deferred_income_act', 'glsetup.sales', 'varchar', '15', ''),
+('deferred_income_act', 'glsetup.sales', 'varchar', '15', '21130001'),
 ('depreciation_period', 'glsetup.company', 'tinyint', '1', '1'),
 ('domicile', 'setup.company', 'varchar', '55', ''),
 ('email', 'setup.company', 'varchar', '100', 'delta@delta.com'),
@@ -1753,6 +1752,7 @@ INSERT INTO `0_sys_prefs` VALUES
 ('print_item_images_on_quote', 'glsetup.inventory', 'tinyint', '1', '0'),
 ('profit_loss_year_act', 'glsetup.general', 'varchar', '15', '39010001'),
 ('pyt_discount_act', 'glsetup.purchase', 'varchar', '15', '42011003'),
+('ref_no_auto_increase','setup.company', 'tinyint', 1, '0'),
 ('retained_earnings_act', 'glsetup.general', 'varchar', '15', '39010002'),
 ('round_to', 'setup.company', 'int', '5', '1'),
 ('show_po_item_codes', 'glsetup.purchase', 'tinyint', '1', '0'),
@@ -1766,42 +1766,6 @@ INSERT INTO `0_sys_prefs` VALUES
 ('use_manufacturing', 'setup.company', 'tinyint', '1', '1'),
 ('version_id', 'system', 'varchar', '11', '2.4.1');
 
-### Structure of table `0_sys_types` ###
-
-DROP TABLE IF EXISTS `0_sys_types`;
-
-CREATE TABLE `0_sys_types` (
-  `type_id` smallint(6) NOT NULL DEFAULT '0',
-  `type_no` int(11) NOT NULL DEFAULT '1',
-  `next_reference` varchar(100) NOT NULL DEFAULT '',
-  PRIMARY KEY (`type_id`)
-) ENGINE=InnoDB ;
-
-### Data of table `0_sys_types` ###
-
-INSERT INTO `0_sys_types` VALUES
-('0', '17', '1'),
-('1', '7', '1'),
-('2', '4', '1'),
-('4', '3', '1'),
-('10', '16', '1'),
-('11', '2', '1'),
-('12', '6', '1'),
-('13', '1', '1'),
-('16', '2', '1'),
-('17', '2', '1'),
-('18', '1', '1'),
-('20', '6', '1'),
-('21', '1', '1'),
-('22', '3', '1'),
-('25', '1', '1'),
-('26', '1', '1'),
-('28', '1', '1'),
-('29', '1', '1'),
-('30', '0', '1'),
-('32', '0', '1'),
-('35', '1', '1'),
-('40', '1', '1');
 
 ### Structure of table `0_tag_associations` ###
 

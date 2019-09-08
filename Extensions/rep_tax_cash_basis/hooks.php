@@ -10,10 +10,13 @@
 
 define ('SS_TAXREPCASH', 101<<8);
 class hooks_rep_tax_cash_basis extends hooks {
-	var $module_name = 'Cash Basis Tax Reporting'; 
+
+	function __construct() {
+		$this->module_name = 'rep_tax_cash_basis';
+	}
 
 	/*
-		Install additonal menu options provided by module
+		Install additional menu options provided by module
 	*/
 	function install_options($app) {
 		global $path_to_root;
@@ -21,7 +24,7 @@ class hooks_rep_tax_cash_basis extends hooks {
 		switch($app->id) {
 			case 'GL':
 				$app->add_lapp_function(1, _('Tax Inquiry (Cash Basis)'), 
-					$path_to_root.'/modules/rep_tax_cash_basis/tax_inquiry_cash.php', 'SA_TAXREPCASH');
+					$path_to_root.'/modules/'.$this->module_name.'/tax_inquiry_cash.php', 'SA_TAXREPCASH');
 		}
 	}
 

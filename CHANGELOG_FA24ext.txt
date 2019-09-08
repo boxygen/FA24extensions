@@ -1,11 +1,164 @@
-2017-07-09  Ap.Muthu  import_items module: fixes
-2017-07-09  Ap.Muthu  osc_orders module: fixes ported from FA 2.3.x
-2017-07-07  toHZLjGk  Dashboard Module: Date Picker popup fix
-2017-07-01  Ap.Muthu  Import Transactions: mysql_fetch_assoc => db_fetch_assoc and Filter Fix
-2017-06-24  Ap.Muthu  Charts Finsihed => Finished
-2017-06-24  Ap.Muthu  Single line comment in css not quite a comment
-2017-06-23  Ap.Muthu  Language .po files corrected for '\\n' => '\n' 
-2017-06-21  Ap.Muthu  Corrected GB general Chart of Accounts for FA v2.4.1 
-2017-06-19  Ap.Muthu  Dashboard Theme default.css - removed trailing */
-2017-06-19  Ap.Muthu  Theme greyred => grayred to match code
-2017-06-17  Ap.Muthu  Initial Import from official FA 2.4 extensions distribution repo
+2019-09-03  Phuong       Updated FrontHRM with Job Positions and Attendance fixes
+2019-07-06  Phuong       Updated FrontHRM with shortcuts
+2019-07-06  Phuong       Updated FrontHRM to v2.4.0-3
+2019-05-12  Tom Moulton  osc_orders extension updates
+2019-05-02  BraathWaate  Import Transactions extension updates
+2019-04-21  StefanDutch  nl_NL core language files fully done
+2019-04-20  Ap.Muthu     Updated nl_NL language files
+2019-03-14  BraathWaate  Added Enhanced Aged Customer Analysis
+2019-03-10  BraathWaate  Enhanced Customer Statement - remove show also allocated
+2019-01-31  Ap.Muthu     Fixed charts - suppliers.supp_ref ordered after supp_name field
+2019-01-31  Ap.Muthu     Fixed charts - stock_category.inactive ordered after dflt_dim2 field
+2019-01-29  Ap.Muthu     Fixed charts - debtors_master.debtor_ref ordered after name field
+2019-01-29  Ap.Muthu     Fixed charts - cust_branch.branch_ref ordered after br_name field
+2019-01-28  Ap.Muthu     Fixed charts - budget_trans.memo_ field added, bank_trans.bank_trans_type_id removed
+2019-01-25  Ap.Muthu     Updated charts with upstream version number bumps, sys_types table removed
+2019-01-25  Ap.Muthu     Updated themes with upstream version number bumps
+2019-01-24  BraathWaate  osCommerce Heading alignment
+2019-01-15  Ap.Muthu     Updated extensions with upstream version number bumps
+2019-01-15  Ap.Muthu     Updated zen_import with upstream for MySQLi usage
+2019-01-14  Ap.Muthu     Updated elegant theme for FA 2.4.6
+2019-01-01  Ap.Muthu     Updated extension repgen with upstream changes
+2018-12-31  kvvaradha    Missing dimensions parameters in report extensions fixed
+2018-12-22  poncho1234   Added additional_fields extension for Customers, Suppliers and Items
+2018-12-08  Ap.Muthu     hi_IN core translations updated for all strings in FA 2.4.5
+2018-12-08  Ap.Muthu     Removed non standard @braathwaate's constants ST_BULKDEPOSIT, ST_CASHDEPOSIT for now
+2018-12-08  Ap.Muthu     PHP 7.x strict variable scope and visibility fixed
+2018-12-08  Ap.Muthu     ta_IN core translations updated for all strings in FA 2.4.5
+2018-07-05  BraathWaate  bank_gl_inquiry: synched for use with core functions only
+2018-07-02  Ap.Muthu     rep_sales_type_summary: Total column position and Remarks heading fixed
+2018-07-02  Ap.Muthu     rep_cust_statement: fixed column spacing
+2018-07-02  Ap.Muthu     sales_map and bank_gl_inquiry extensions fixed for missing functions
+2018-07-01  BraathWaate  sales_map extension added
+2018-07-01  Ap.Muthu     Added Italian Chart of Accounts en_IT-general.sql
+2018-06-26  Ap.Muthu     rep_cust_statement: Synched $rep for bulk reports with parent rep108.php
+2018-06-24  Ap.Muthu     Updated API to v2.4-1.6 without composer
+2018-06-24  Ap.Muthu     Replaced Tab with 4 spaces in API specific files
+2018-06-24  BraathWaate  Added Delivery Pick List report module
+2018-06-24  Ap.Muthu     modules config files cleanup
+2018-06-24  BraathWaate  Added (Item) rep_sales_type_summary module
+2018-06-24  BraathWaate  Added rep_cust_statement module - shows memo as well
+2018-06-24  BraathWaate  Added bank_gl_inquiry module - shows GL Account and memo as well
+2018-06-21  BraathWaate  Rep Inventory History: removed unused function argument
+2018-05-19  BraathWaate  Bank Auto Reconcile: module fixes
+2018-04-22  Ap.Muthu     All Charts updated with new sys_prefs record for ref_no_auto_increase flag
+2018-04-21  LiChun       zh_TW core language strings updated for all 3313 strings
+2018-04-19  LiChun       zh_TW core language strings updated
+2018-04-19  Ap.Muthu     add_stock_adjustment parameters fixed for FA 2.4 changes in API
+2018-04-07  poncho1234   gettext strings for Account and Months extended in extensions
+2018-03-29  Ap.Muthu     nb_NO core language file updated on and from Transifex
+2018-03-21  Ap.Muthu     en_ZA 4digit Chart updated for 15% VAT in RSA from 2018 onwards
+2018-03-17  Ap.Muthu     ar_EG, hi_IN, ta_IN, vi_VN core translations updated for all 3313 strings
+2018-03-07  BraathWaate  rep_batch_check_print: custom form sql now includes Quick Entries
+2018-03-07  BraathWaate  rep_bank_daily_sweep: rounded the $total_daily amount value
+2018-03-07  BraathWaate  rep_batch_check_print: order by redundancy removed, last column pushed a little
+2018-03-07  BraathWaate  osc_orders module: products_status, new order, last_date / end_date fix
+2018-03-07  BraathWaate  Bank Auto Reconcile: CSV format extended, taxes added
+2018-02-28  Phuong       Kanban Project Management extension partial upstream synch
+2018-02-18  Ap.Muthu     Charts Prepaid additions
+2018-02-18  Ap.Muthu     module api24: VARLIB_PATH and VARLOG_PATH changes included
+2018-02-18  Braathwaate  en_US ANSI core language files updated
+2018-02-10  Ap.Muthu     South African 4 digit Chart of Accounts added based on en_US-new.sql
+2018-02-01  Ap.Muthu     de_DE language translations updated and charset as iso-8859-1
+2018-01-25  Ap.Muthu     id_ID language translations updated and charset as iso-8859-1
+2018-01-20  BraathWaate  rep_bank_daily_sweep module added
+2018-01-20  BraathWaate  rep_batch_check_print module: guide by date
+2018-01-20  BraathWaate  Profit and Loss All Dimensions extension added
+2018-01-20  BraathWaate  osc_orders module: product attribute import added
+2018-01-20  BraathWaate  import_transactions module: reference pattern check added
+2018-01-20  BraathWaate  Added bank_auto_reconcile extension
+2018-01-18  Ap.Muthu     Updated EG, AU, CA, FR, GB, IN, SG, US-5, US-GAAP English Charts with upstream
+2018-01-07  Ap.Muthu     en_GB general 4 digit Chart of Accounts fixed typo
+2017-12-25  Ap.Muthu     import_transactions module: cart class synched with core
+2017-12-25  Ap.Muthu     import_transactions module: missing sales document types added
+2017-12-23  Ap.Muthu     import_transactions module: missing argument fixed
+2017-12-23  Ap.Muthu     Re-run of Customer Ledger Report extension - filters areas, salesmen
+2017-12-23  Ap.Muthu     import_transactions module: undefined variables skipped
+2017-12-22  Ap.Muthu     import_transactions module: updated documentation
+2017-12-22  Ap.Muthu     import_transactions module: fixed function name change in FA 2.4
+2017-12-21  Ayub Faizal  Added Customer Ledger Report extension - filters areas, salesmen
+2017-12-17  Ap.Muthu     FrontHRM ERD added
+2017-12-17  Phuong       FrontHRM Payroll and Human Resource extension added
+2017-12-11  Phuong       Upstream update of Kanban PME with date filter
+2017-12-09  Phuong       Kanban Project Management extension added
+2017-11-28  Ap.Muthu     Synched Slim API for FA 2.4.x with Cambell's frontaccounting-2.4-api.module.1.4.zip
+2017-11-24  Ap.Muthu     module api24: extended to GET specific tax_type
+2017-11-24  Ap.Muthu     Synched Slim API for FA 2.4.x with Cambell's frontaccounting-2.4-api.module.1.3.zip
+2017-11-24  Ap.Muthu     Vietnamese (vi_VN) core language strings fully translated
+2017-11-23  Ap.Muthu     Updated AU, GB, PH, IN, SG, CN general 4 digit Charts for new sys_pref items
+2017-11-23  Ap.Muthu     en_AU general 4 digit Chart of Accounts fixed fiscal year range
+2017-11-20  Ap.Muthu     en_AU general 4 digit Chart of Accounts updated for FA 2.4.3
+2017-11-18  Ap.Muthu     Slim 2.64 API for FA 2.4.x added
+2017-11-13  Ap.Muthu     Indian 4-digit Chart of Accounts updated for FA 2.4.3
+2017-11-13  Ap.Muthu     Hindi (hi_IN) core language fixes
+2017-11-11  Ap.Muthu     Extensions updated to use __construct().
+2017-11-11  Ap.Muthu     Themes updated to use __construct().
+2017-11-11  Ap.Muthu     hello_world module updated to use __construct().
+2017-11-10  Ap.Muthu     Arabic, Hindi and Tamil core language translation files updated to FA 2.4.3 fully
+2017-11-10  Ap.Muthu     Arabic (ar_EG) core language strings fully translated
+2017-11-09  Ap.Muthu     auth_ldap module activation check for ldap_connect() presence: upstream synch
+2017-11-08  Ap.Muthu     FA 2.4.x standard themes and extensions in core removed as redundant
+2017-11-05  Ap.Muthu     Tamil (ta_IN) core language typo fix
+2017-11-05  Ap.Muthu     Hindi (hi_IN) core language strings fully translated
+2017-11-03  Ap.Muthu     Tamil (ta_IN) core language strings fully translated
+2017-11-02  Ap.Muthu     Tamil (ta_IN) core translations 1247/3302 strings translated
+2017-11-02  Ap.Muthu     Hindi (hi_IN) core translations 1178/3302 strings translated
+2017-11-02  Ap.Muthu     import_transactions module: bumped version number to match upstream
+2017-11-02  Ap.Muthu     Tamil (ta_IN) core translations 402/3302 strings translated
+2017-11-02  Ap.Muthu     import_items module: adjusted table width for Import page
+2017-11-01  Ap.Muthu     Removed Dropdown Theme as it is in the core
+2017-11-01  Ap.Muthu     Dropdown Theme Re-run to fix graph display on dashboards
+2017-11-01  Ap.Muthu     Dropdown Theme made independent of Dynamic Theme assets
+2017-10-31  Ap.Muthu     $SysPrefs fixes for Dropdown Theme
+2017-10-31  Ap.Muthu     Whitespace fixes for Dynamic Theme
+2017-10-24  Ap.Muthu     zh_CN Chinese Simplified Standard Chart of Accounts updated to FA 2.4.2
+2017-10-21  Ap.Muthu     Hello World module on specific tab position
+2017-10-19  Ap.Muthu     Hello World module extended into a separate tab
+2017-10-19  BraathWaate  import_transactions module: fixed Journal Import next ref
+2017-10-12  Ap.Muthu     Updated Tamil (ta_IN) core translation with 14 more strings from Transifex
+2017-10-02  Albertolima  module import_multijournalentries is_new_reference() method fix
+2017-09-30  Ap.Muthu     rep_check_print module fixed by frontporting function get_alloc_supp_sql()
+2017-09-29  Ap.Muthu     Recurring Sales Order module by Cambell added
+2017-09-23  Ap.Muthu     Hello World module added
+2017-09-20  Ap.Muthu     Inventory History report: cleaned up sql and substituted some English variables
+2017-09-15  Ap.Muthu     repgen module: auto http / https
+2017-08-16  BraathWaate  osc_orders module: import no quantity osc items like services/charges
+2017-08-16  BraathWaate  osc_orders module: fixed typo $total_shiping => $total_shipping
+2017-08-15  Ap.Muthu     Added hi_IN (Hindi India) core language
+2017-08-15  Ap.Muthu     Added km_KH (Khymer Cambodia) core language
+2017-08-14  BraathWaate  import_transactions module: templates to reflect supplier=3
+2017-08-14  BraathWaate  Batch Check Printing module added
+2017-08-14  BraathWaate  osc_orders module: more import features, create paid invoices
+2017-07-31  Ap.Muthu     Updated Arabic (Egypt) (ar_EG) core language to FA v2.4.2
+2017-07-29  Ap.Muthu     Added Vietnamese (vi_VN) and Tamil (ta_IN) FA 2.4.2 core languages
+2017-07-29  Ap.Muthu     Double escaped all js translation source strings
+2017-07-24  Ap.Muthu     en_PH Chart: Phillipines CoA synched to FA 2.4.1 en_US-new.sql
+2017-07-24  Ap.Muthu     en_PH Chart: Phillipines CoA set to Phillipine Peso (PHP)
+2017-07-22  BraathWaate  import_transactions module: FA 2.4.x fixes (not tested by Ap.Muthu)
+2017-07-22  Ap.Muthu     Typos fixed: additonal => additional
+2017-07-22  mane27a      asset_register module: Added es_MX translation
+2017-07-21  Ap.Muthu     import_transactions module: whitespace cleanups and space indentations
+2017-07-19  BraathWaate  osc_orders module: osc_dbQuery() mods, var scoping and mysqli memory optimisation
+2017-07-19  BraathWaate  osc_orders module: oscId and oscPrefix parameters added
+2017-07-19  Ap.Muthu     osc_orders module: optimised osc db connect calls
+2017-07-19  Ap.Muthu     osc_orders module: osc db access mysql => mysqli
+2017-07-18  Ap.Muthu     osc_orders module: whitespace indenting
+2017-07-17  BraathWaate  import_items module: indent cleanup and separation of ITEM addition
+2017-07-17  Ap.Muthu     import_items module: indent cleanup
+2017-07-17  BraathWaate  import_items module: dbescape and get_item_category_by_name()
+2017-07-11  Ap.Muthu     osc_orders module: Typos fixed
+2017-07-11  Ap.Muthu     Import Transactions: Whitespace cleanup, beautification
+2017-07-10  Ap.Muthu     asset_register: Date Picker fix
+2017-07-10  Ap.Muthu     rep_tax_cash_basis: Popup Window and Date Picker fix
+2017-07-10  Ap.Muthu     Import Transactions: Popup Window fix
+2017-07-09  Ap.Muthu     import_items module: fixes
+2017-07-09  Ap.Muthu     osc_orders module: fixes ported from FA 2.3.x
+2017-07-07  toHZLjGk     Dashboard Module: Date Picker popup fix
+2017-07-01  Ap.Muthu     Import Transactions: mysql_fetch_assoc => db_fetch_assoc and Filter Fix
+2017-06-24  Ap.Muthu     Charts Finsihed => Finished
+2017-06-24  Ap.Muthu     Single line comment in css not quite a comment
+2017-06-23  Ap.Muthu     Language .po files corrected for '\\n' => '\n' 
+2017-06-21  Ap.Muthu     Corrected GB general Chart of Accounts for FA v2.4.1 
+2017-06-19  Ap.Muthu     Dashboard Theme default.css - removed trailing */
+2017-06-19  Ap.Muthu     Theme greyred => grayred to match code
+2017-06-17  Ap.Muthu     Initial Import from official FA 2.4 extensions distribution repo

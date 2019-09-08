@@ -109,7 +109,6 @@ CREATE TABLE `0_bank_trans` (
   `bank_act` varchar(15) NOT NULL DEFAULT '',
   `ref` varchar(40) DEFAULT NULL,
   `trans_date` date NOT NULL DEFAULT '0000-00-00',
-  `bank_trans_type_id` int(10) unsigned DEFAULT NULL,
   `amount` double DEFAULT NULL,
   `dimension_id` int(11) NOT NULL DEFAULT '0',
   `dimension2_id` int(11) NOT NULL DEFAULT '0',
@@ -156,6 +155,7 @@ CREATE TABLE `0_budget_trans` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tran_date` date NOT NULL DEFAULT '0000-00-00',
   `account` varchar(15) NOT NULL DEFAULT '',
+  `memo_` tinytext NOT NULL,
   `amount` double NOT NULL DEFAULT '0',
   `dimension_id` int(11) DEFAULT '0',
   `dimension2_id` int(11) DEFAULT '0',
@@ -1294,6 +1294,7 @@ CREATE TABLE `0_cust_branch` (
   `branch_code` int(11) NOT NULL AUTO_INCREMENT,
   `debtor_no` int(11) NOT NULL DEFAULT '0',
   `br_name` varchar(60) NOT NULL DEFAULT '',
+  `branch_ref` varchar(30) NOT NULL,
   `br_address` tinytext NOT NULL,
   `area` int(11) DEFAULT NULL,
   `salesman` int(11) NOT NULL DEFAULT '0',
@@ -1309,7 +1310,6 @@ CREATE TABLE `0_cust_branch` (
   `notes` tinytext,
   `bank_account` varchar(60) DEFAULT NULL,
   `inactive` tinyint(1) NOT NULL DEFAULT '0',
-  `branch_ref` varchar(30) NOT NULL,
   PRIMARY KEY (`branch_code`,`debtor_no`),
   KEY `branch_ref` (`branch_ref`),
   KEY `group_no` (`group_no`)
@@ -1386,6 +1386,7 @@ DROP TABLE IF EXISTS `0_debtors_master`;
 CREATE TABLE `0_debtors_master` (
   `debtor_no` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL DEFAULT '',
+  `debtor_ref` varchar(30) NOT NULL,
   `address` tinytext,
   `tax_id` varchar(55) NOT NULL DEFAULT '',
   `curr_code` char(3) NOT NULL DEFAULT '',
@@ -1399,7 +1400,6 @@ CREATE TABLE `0_debtors_master` (
   `credit_limit` float NOT NULL DEFAULT '1000',
   `notes` tinytext,
   `inactive` tinyint(1) NOT NULL DEFAULT '0',
-  `debtor_ref` varchar(30) NOT NULL,
   PRIMARY KEY (`debtor_no`),
   UNIQUE KEY `debtor_ref` (`debtor_ref`),
   KEY `name` (`name`)
@@ -1464,7 +1464,7 @@ CREATE TABLE `0_fiscal_year` (
 ### Data of table `0_fiscal_year` ###
 
 INSERT INTO `0_fiscal_year` VALUES
-('1', '2012-01-01', '2012-12-31', '0');
+('1', '2018-01-01', '2018-12-31', '0');
 
 ### Structure of table `0_gl_trans` ###
 
@@ -2153,7 +2153,6 @@ DROP TABLE IF EXISTS `0_stock_category`;
 CREATE TABLE `0_stock_category` (
   `category_id` int(11) NOT NULL AUTO_INCREMENT,
   `description` varchar(60) NOT NULL DEFAULT '',
-  `inactive` tinyint(1) NOT NULL DEFAULT '0',
   `dflt_tax_type` int(11) NOT NULL DEFAULT '1',
   `dflt_units` varchar(20) NOT NULL DEFAULT 'each',
   `dflt_mb_flag` char(1) NOT NULL DEFAULT 'B',
@@ -2164,6 +2163,7 @@ CREATE TABLE `0_stock_category` (
   `dflt_wip_act` varchar(15) NOT NULL DEFAULT '',
   `dflt_dim1` int(11) DEFAULT NULL,
   `dflt_dim2` int(11) DEFAULT NULL,
+  `inactive` tinyint(1) NOT NULL DEFAULT '0',
   `dflt_no_sale` tinyint(1) NOT NULL DEFAULT '0',
   `dflt_no_purchase` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`category_id`),
@@ -2338,6 +2338,7 @@ DROP TABLE IF EXISTS `0_suppliers`;
 CREATE TABLE `0_suppliers` (
   `supplier_id` int(11) NOT NULL AUTO_INCREMENT,
   `supp_name` varchar(60) NOT NULL DEFAULT '',
+  `supp_ref` varchar(30) NOT NULL DEFAULT '',
   `address` tinytext NOT NULL,
   `supp_address` tinytext NOT NULL,
   `gst_no` varchar(25) NOT NULL DEFAULT '',
@@ -2357,7 +2358,6 @@ CREATE TABLE `0_suppliers` (
   `payment_discount_account` varchar(15) NOT NULL DEFAULT '',
   `notes` tinytext NOT NULL,
   `inactive` tinyint(1) NOT NULL DEFAULT '0',
-  `supp_ref` varchar(30) NOT NULL,
   PRIMARY KEY (`supplier_id`),
   KEY `supp_ref` (`supp_ref`)
 ) ENGINE=InnoDB ;
@@ -2440,6 +2440,7 @@ INSERT INTO `0_sys_prefs` VALUES
 ('print_item_images_on_quote', 'glsetup.inventory', 'tinyint', '1', '0'),
 ('profit_loss_year_act', 'glsetup.general', 'varchar', '15', '9990'),
 ('pyt_discount_act', 'glsetup.purchase', 'varchar', '15', '600000000'),
+('ref_no_auto_increase','setup.company', 'tinyint', 1, '0'),
 ('retained_earnings_act', 'glsetup.general', 'varchar', '15', '2050'),
 ('round_to', 'setup.company', 'int', '5', '1'),
 ('show_po_item_codes', 'glsetup.purchase', 'tinyint', '1', '0'),
@@ -2453,42 +2454,6 @@ INSERT INTO `0_sys_prefs` VALUES
 ('use_manufacturing', 'setup.company', 'tinyint', '1', '1'),
 ('version_id', 'system', 'varchar', '11', '2.4.1');
 
-### Structure of table `0_sys_types` ###
-
-DROP TABLE IF EXISTS `0_sys_types`;
-
-CREATE TABLE `0_sys_types` (
-  `type_id` smallint(6) NOT NULL DEFAULT '0',
-  `type_no` int(11) NOT NULL DEFAULT '1',
-  `next_reference` varchar(100) NOT NULL DEFAULT '',
-  PRIMARY KEY (`type_id`)
-) ENGINE=InnoDB ;
-
-### Data of table `0_sys_types` ###
-
-INSERT INTO `0_sys_types` VALUES
-('0', '17', '1'),
-('1', '7', '1'),
-('2', '4', '1'),
-('4', '3', '1'),
-('10', '16', '1'),
-('11', '2', '1'),
-('12', '6', '1'),
-('13', '1', '1'),
-('16', '2', '1'),
-('17', '2', '1'),
-('18', '1', '1'),
-('20', '6', '1'),
-('21', '1', '1'),
-('22', '3', '1'),
-('25', '1', '1'),
-('26', '1', '1'),
-('28', '1', '1'),
-('29', '1', '1'),
-('30', '0', '1'),
-('32', '0', '1'),
-('35', '1', '1'),
-('40', '1', '1');
 
 ### Structure of table `0_tag_associations` ###
 

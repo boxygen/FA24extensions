@@ -1,6 +1,5 @@
 /doc/Changelog.txt: 5322e089a1b5a7653ff664ee11fd2655376f7c7a
 /doc/readme.txt: f92f61b227a236be33e74c8b466d4fc635c4a868
-/_init/config: c7e596427329cb673155b58efd673b8a8003a724
-/import_multijournalentries.php: 636d0df64a199db5fc3899e5a4e597fa59cbb5e3
-/hooks.php: 816c82d7a6560fb567af53e70934b958d3d533f7
-
+/hooks.php: 3023ec659f014d6149895aaa04189fcf63ef1930
+/import_multijournalentries.php: 311040c94aebc247d143ce38b217d44601d2008e
+/_init/config: 075bd691a1958d912321741838eb616b12c4da5f

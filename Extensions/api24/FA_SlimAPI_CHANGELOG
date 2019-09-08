@@ -1,0 +1,17 @@
+2018-06-24 Ap.Muthu Started Purchases API routing
+2018-06-24 Ap.Muthu Updated to API v2.4-1.6 without composer
+2018-06-24 Ap.Muthu Replaced all tabs with 4 spaces for non core files
+2018-04-23 Ap.Muthu Missing argument $info removed
+2018-02-18 Ap.Muthu Sales transactions Total value fixed
+2018-02-18 Ap.Muthu Upstream VARLIB_PATH and VARLOG_PATH inclusions added
+2017-11-28 Ap.Muthu All define() statements consolidated into api_config.php.
+2017-11-27 Ap.Muthu POST / PUT consistency ensured. Associative array elements only.
+2017-11-24 Ap.Muthu Added Sepcific taxType endpoint. Fixed typos.
+2017-11-24 Ap.Muthu Added `Content-Type: application/json` for json encoded body
+2017-11-18 Ap.Muthu Added example for json to array using json_decode()
+2017-11-18 Ap.Muthu Translated Spanish comments to English
+2017-11-18 Ap.Muthu Fixes to FA interface code to work without composer dependencies
+2017-11-18 Ap.Muthu Remove forced FA 5.4+ syntax Array declaration [] => array()
+2017-11-18 Ap.Muthu Non-Composer FA portion import from cambell-prince repo (fork of andresamayadiaz)
+2017-11-18 Ap.Muthu Fixes to Slim2 Framework for constructor clash with class named method
+2017-11-18 Ap.Muthu Initial import of Slim2 Framework

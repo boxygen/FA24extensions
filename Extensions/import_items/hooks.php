@@ -1,10 +1,13 @@
 <?php
 define ('SS_IMPORTCSVITEMS', 105<<8);
 class hooks_import_items extends hooks {
-	var $module_name = 'Import CSV Items'; 
+
+	function __construct() {
+		$this->module_name = 'import_items';
+	}
 
 	/*
-		Install additonal menu options provided by module
+		Install additional menu options provided by module
 	*/
 	function install_options($app) {
 		global $path_to_root;
@@ -12,7 +15,7 @@ class hooks_import_items extends hooks {
 		switch($app->id) {
 			case 'stock':
 				$app->add_rapp_function(2, _('Import CSV Items'), 
-					$path_to_root.'/modules/import_items/import_items.php', 'SA_CSVIMPORT');
+					$path_to_root.'/modules/'.$this->module_name.'/import_items.php', 'SA_CSVIMPORT');
 		}
 	}
 
